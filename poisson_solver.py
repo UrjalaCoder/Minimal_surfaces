@@ -14,9 +14,8 @@ def poisson_solve(Phi_form: ZeroForm) -> np.array:
 
     # Divisor with finite difference taken into account:
     sin_correction = np.sum(np.sin(np.pi * K) ** 2, axis = -1) * 4 / (h ** 2)
-    sin_correction[0, 0, 0] = 1
+    sin_correction[0, 0, 0] = sin_correction[0, 0, 0] + 1E-9
     result = Phi_fft / (-sin_correction)
-    result[0, 0, 0] = 0
 
     # Transform back into original space
     result = np.fft.ifftn(result)
