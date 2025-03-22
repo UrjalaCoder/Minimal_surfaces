@@ -1,5 +1,5 @@
 import numpy as np
-from curve_generator import numerical_tangent_function
+from utils.curve_generator import numerical_tangent_function
 
 def compute_area_vector(t_values, curve_function):
     h = 1 / t_values.shape[0] # Assumes that curve is parameterized from 0 to 1.
