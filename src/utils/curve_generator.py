@@ -2,7 +2,7 @@ import numpy as np
 
 def ellipse_function(t, a=1, b=1, base_point=np.array([0, 0, 0])):
     z = base_point[-1]
-    return base_point + np.array([a * np.cos(2 * np.pi * t), b * np.sin(2 * np.pi * t), z])
+    return base_point + np.array([a * np.cos(2 * np.pi * t), b * np.sin(2 * np.pi * t), 0])
 
 def generate_periodic_helicoid_curve(t, num_turns=3, radius=1.0, domain_height=1.0):
     """

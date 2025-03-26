@@ -79,3 +79,13 @@ def poisson_solve(Phi_form: ZeroForm) -> np.array:
     result = np.fft.ifftn(result)
     return result
 
+def closest_point_on_curve(p: np.array, curve_points: np.array) -> np.array:
+    dists = np.linalg.norm(curve_points - p, axis=1)
+    t_star = np.argmin(dists)
+    return curve_points[t_star], t_star
+
+def closest_point_on_surface(p: np.array, surface_points: np.array) -> np.array:
+    """
+    Mathematically the same computation for curves and surfaces, just want to emphasise the difference in arguments.
+    """
+    return closest_point_on_curve(p, curve_points=surface_points)
