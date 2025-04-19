@@ -1,10 +1,10 @@
 from manim import *
 from ..grid import Grid
-from ..vector_field import VectorField
+from ..differential_form import DifferentialForm
 
 def build_vector_field_scene(
         grid: Grid,
-        vector_field: VectorField,
+        vector_field: DifferentialForm,
         curve_function: callable = None,
         surface_function: callable = None,
         curve_color = BLACK,
@@ -23,7 +23,7 @@ def build_vector_field_scene(
     
     def mapping_of_vector_field(camera_position: np.array) -> np.array:
         mapped_position = inverse_map_to_camera_view(camera_position)
-        return vector_field(mapped_position)
+        return vector_field.evaluate_at_point(mapped_position)
     
     def mapping_of_curve(t: float) -> np.array:
         return map_to_camera_view(curve_function(t))

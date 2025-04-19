@@ -75,21 +75,5 @@ class Grid:
         return f"Grid3D(resolution={self.res}, bounds={self.bounds})"
 
 if __name__ == '__main__':
+    # Test grid initialization
     grid = Grid(resolution=32, bounds=[[-1, 1], [-1, 1], [-1, 1]])
-
-    # Flat data
-    positions = grid.get_flat_positions()       # shape (32768, 3)
-    indices = grid.get_flat_indices()
-
-    # Structured data
-    pos_grid = grid.get_grid_positions()        # shape (32, 32, 32, 3)
-    idx_grid = grid.get_grid_indices()
-
-    # Point conversions
-    idx = [5, 10, 20]
-    p = grid.index_to_position(idx)
-
-    recovered_idx = grid.position_to_index(p)
-
-    print(p)
-    print(recovered_idx)
